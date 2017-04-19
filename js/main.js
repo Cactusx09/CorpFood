@@ -20,10 +20,10 @@ $(document).ready(function(){
 			speed: 250,
 			slideMargin: 30
 		});
-		$('.s_try__head_prev').click(function(){
+		$('.s_try .g_figure_arr_prev').click(function(){
 			sl_try.goToPrevSlide();
 		});
-		$('.s_try__head_next').click(function(){
+		$('.s_try .g_figure_arr_next').click(function(){
 			sl_try.goToNextSlide();
 		});
 	}

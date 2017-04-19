@@ -249,6 +249,57 @@ $t: .25s;
 		border-color: $red;
 	}
 }
+.g_figure_arr{
+	@extend ._flex_sb_c;
+	margin-bottom: 30px;
+	&_prev{
+		span{
+			margin-left: 15px;
+		}
+	}
+	&_pager{
+		@extend ._flex_fs_c;
+		a{
+			font-family: "Roboto Condensed";
+			width: 60px;
+			height: 60px;
+			border-radius: 50%;
+			@extend ._flex_c_c;
+			flex-direction: column;
+			line-height: 1;
+			font-size: 1.3rem;
+			transition: $t;
+			color: #464646;
+			margin-left: 4px;
+			margin-right: 4px;
+			small{
+				font-size: 1.25rem;
+			}
+			&._current{
+				background-color: $cheese;
+				color: #fff;
+				margin-right: 7px;
+				margin-left: 7px;
+				+a{
+					margin-left: 7px;
+				}
+			}
+		}
+	}
+	&_next{
+		span{
+			margin-right: 15px;
+		}
+	}
+	&_arr{
+		cursor: pointer;
+		user-select: none;
+		span{
+			color: #464646;
+			font-size: 0.875rem;
+		}
+	}
+}
 
 /* ==========================================================
    _header _footer
@@ -361,6 +412,7 @@ $t: .25s;
 		top: calc(100% + 12px);
 		left: 0;
 		width: 100%;
+		z-index: 5555;
 		box-shadow: 0 0 0.438rem rgba(179, 179, 179, 0.75);
 		background-color: #fff;
 		background-position: center;
@@ -763,24 +815,6 @@ $t: .25s;
 		text-align: center;
 		margin-bottom: 15px;
 	}
-	&__head{
-		@extend ._flex_sb_c;
-		margin-bottom: 30px;
-		&_prev{
-			span{
-				margin-left: 15px;
-			}
-		}
-		&_next{
-			span{
-				margin-right: 15px;
-			}
-		}
-		&_arr{
-			cursor: pointer;
-			user-select: none;
-		}
-	}
 	&__body{
 		@extend ._flex_sb_s;
 		margin-bottom: 24px;
@@ -1005,7 +1039,112 @@ $t: .25s;
    _inner
    ========================================================== */
 
-
+//menui.html
+.s_menu{
+	background-color: #fafafa;
+	overflow: hidden;
+	&__body{
+		display: flex;
+		align-items: stretch;
+		justify-content: space-between;
+	}
+	&__left{
+		background-color: #fff;
+		min-width: 280px;
+		width: 100%;
+		margin-right: 15px;
+		margin-top: 131px;
+		position: relative;
+		&:before{
+			content: '';
+			position: absolute;
+			right: 100%;
+			top: 0;
+			background-color: #fff;
+			z-index: 2;
+			width: 1000%;
+			height: 100%;
+		}
+		ul{
+			margin: 20px 15px 25px 0;
+			li{
+				padding: 10px;
+				&:not(:last-of-type){
+					border-bottom: 1px solid  #f2f2f2;
+				}
+				&._current{
+					background-color: $cheese;
+					border-bottom-color: transparent;
+					a{
+						color: #fff;
+					}
+				}
+				a{
+					font-size: 1.066rem;
+					color: #797979;
+					font-family: 'Roboto Condensed';
+					display: block;
+					position: relative;
+					padding-right: 17px;
+					&:before{
+						content: '';
+						position: absolute;
+						width: 20px;
+						height: 10px;
+						top: 6px;
+						right: 0;
+						background: url('../images/ico/arr_go.png') no-repeat center;
+						background-size: cover;
+					}
+				}
+			}
+		}
+	}
+	&__right{
+		flex-grow: 2;
+		&_links{
+			@extend ._flex_sb_c;
+			padding: 25px 0;
+			a{
+				@extend ._flex_fs_c;
+				span{
+					font-family: "Roboto Slab";
+					color: #464646;
+					font-size: 1.375rem;
+					margin-left: 20px;
+					width: 153px;
+				}
+			}
+		}
+		.g_figure_arr{
+			background-color: #fff;
+			box-shadow: -2px 0 8px -2px rgba(0, 0, 0, 0.1);
+			padding: 6px 0px 6px 30px;
+			position: relative;
+			&:before{
+				content: '';
+				position: absolute;
+				left: 100%;
+				top: 0;
+				background-color: #fff;
+				z-index: 2;
+				width: 1000%;
+				box-shadow: 10px 0 8px -2px rgba(0, 0, 0, 0.1);
+				height: 100%;
+			}
+		}
+		&_body{
+			padding-bottom: 100px;
+			@extend ._flex_fs_s;
+			flex-wrap: wrap;
+			margin: -15px;
+			.s_try__item{
+				width: calc(33.333333% - 30px);
+				margin: 15px;
+			}
+		}
+	}
+}
 
 /* ==========================================================
    _popups
