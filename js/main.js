@@ -140,4 +140,10 @@ $(document).ready(function(){
 			}
 		});
 	});
+
+	//faq.html list toogle
+	$('.s_faq__item h3').click(function(){
+		var item = $(this).parent('.s_faq__item');
+		item.toggleClass('_active');
+	});
 });

@@ -1436,6 +1436,59 @@ $t: .25s;
 		}
 	}
 }
+//faq.html
+.s_faq{
+	text-align: center;
+	padding: 60px 0;
+	min-height: calc(100vh - 445px);
+	background-size: auto;
+	background-repeat: repeat-x;
+	background-position: top;
+	&__body{
+		max-width: 900px;
+		margin-left: auto;
+		margin-right: auto;
+		.g_h2{
+			margin-bottom: 50px;
+		}
+	}
+	&__item{
+		box-shadow: 0.125rem 0.25rem 0.25rem rgba(0, 0, 0, 0.17);
+		margin-bottom: 20px;
+		&._active{
+			.g_txt{
+				display: block;
+			}
+			h3{
+				img{
+					transform: rotate(90deg);
+				}
+			}
+		}
+		h3{
+			color: #464646;
+			font-size: 1.125rem;
+			background: #fcfcfc;
+			padding: 10px 60px;
+			position: relative;
+			cursor: pointer;
+			img{
+				position: absolute;
+				right: 25px;
+				top: 50%;
+				margin-top: -7.5px;
+			}
+		}
+		.g_txt{
+			background-color: #fff;
+			padding: 20px 40px;
+			display: none;
+		}
+		li{
+			text-align: left;
+		}
+	}
+}
 
 /* ==========================================================
    _popups
