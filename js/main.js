@@ -70,6 +70,20 @@ $(document).ready(function(){
 		var px = window.pageYOffset;
 		$('.popup').css('top',px+'px');
 	});
+	$('.s_try__txt_btn').click(function(e){
+		e.preventDefault();
+		$('form').each(function() {
+			$(this)[0].reset();
+		});
+		var popup = $('.popup._to_cart');
+		setTimeout(function() {
+			popup.find('input').eq(1).focus();
+		}, 700);
+		popup.find('input').eq(0).val('');
+		$('.overlay, .popup._to_cart').addClass('visible');
+		var px = window.pageYOffset;
+		$('.popup').css('top',px+'px');
+	});
 	//close popups
 	$('.overlay, .close_pop').click(function(){
 		$('.popup, .overlay').removeClass('visible');
