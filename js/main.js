@@ -154,4 +154,12 @@ $(document).ready(function(){
 		hamb.toggleClass('_close');
 		menu.toggleClass('_active');
 	});
+
+	if($('._scroll').length){
+		//custom scroll
+		$('._scroll').perfectScrollbar();
+		$(window).resize(function(){
+			$('._scroll').perfectScrollbar('update');
+		});
+	}
 });
