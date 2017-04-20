@@ -107,7 +107,8 @@ $(document).ready(function(){
 			rules: {
 				form: {required: false},
 				name: {required: true},
-				phone: {required: true}
+				phone: {required: true},
+				mail: {required: true}
 			},
 			messages: {},
 			errorPlacement: function (error, element) {},
