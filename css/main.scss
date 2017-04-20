@@ -1489,6 +1489,36 @@ $t: .25s;
 		}
 	}
 }
+//404.html
+.s_404{
+	min-height: calc(100vh - 445px);
+	@extend ._flex_c_c;
+	text-align: center;
+	h2{
+		font-weight: 700;
+		color: #000;
+		font-size: 2.625rem;
+		font-family: 'Roboto Condensed';
+		margin-bottom: 90px;
+	}
+	h3{
+		font-size: 2.25rem;
+		color: #464646;
+		a{
+			color: #464646;
+			font-weight: 700;
+			text-transform: uppercase;
+		}
+		strong{
+			color: $cheese;
+			font-weight: 700;
+			border-bottom: 3px solid  $cheese;
+			text-transform: uppercase;
+			cursor: pointer;
+			user-select: none;
+		}
+	}
+}
 
 /* ==========================================================
    _popups

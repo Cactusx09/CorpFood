@@ -146,4 +146,12 @@ $(document).ready(function(){
 		var item = $(this).parent('.s_faq__item');
 		item.toggleClass('_active');
 	});
+
+	//404.html menu btn
+	$('.s_404__menu').click(function(){
+		var hamb = $('.header__menu_hamb'),
+			menu = $('.header__menu');
+		hamb.toggleClass('_close');
+		menu.toggleClass('_active');
+	});
 });
