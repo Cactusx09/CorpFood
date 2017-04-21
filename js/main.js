@@ -147,6 +147,24 @@ $(document).ready(function(){
 		item.toggleClass('_active');
 	});
 
+	//profile.html aside tabs
+	$('.s_profile__left li').click(function(){
+		var el = $(this),
+			n = el.index(),
+			body = el.closest('.s_profile__body'),
+			tabs = body.find('.s_profile__right'),
+			img = el.find('img');
+		el.addClass('_current').siblings().removeClass('_current');
+		el.siblings().each(function(){
+			var th = $(this),
+				n = th.index()+1;
+			th.find('img').attr('src','images/ico/profile/'+n+'.png');
+		});
+		el.find('img').attr('src','images/ico/profile/'+(n+1)+'a.png');
+
+		tabs.removeClass('_current').eq(n).addClass('_current');
+	});
+
 	//404.html menu btn
 	$('.s_404__menu').click(function(){
 		var hamb = $('.header__menu_hamb'),
