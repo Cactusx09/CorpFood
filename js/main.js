@@ -75,17 +75,32 @@ $(document).ready(function(){
 		$('form').each(function() {
 			$(this)[0].reset();
 		});
-		var popup = $('.popup._to_cart');
+		var popup = $('.popup._to_cart'),
+			wrap = $(this).prevAll('.s_try__txt_head'),
+			counter = wrap.find('.s_try__count_n'),
+			current_n = parseInt(counter.text()),
+			price = wrap.find('b'),
+			price_n = parseInt(price.text()),
+			item = wrap.closest('.s_try__item'),
+			item_html = item.html();
 		setTimeout(function() {
 			popup.find('input').eq(1).focus();
 		}, 700);
-		popup.find('input').eq(0).val('');
+		popup.find('.popup__info_n strong').text(current_n);
+		popup.find('.popup__info_price strong').text(price_n + ' ₽');
+		popup.find('.s_try__item').html(item_html);
+		popup.find('.s_try__item').find('.g_btn').remove();
+		popup.find('.s_try__item').find('.s_try__txt_head').remove();
+		setTimeout(function(){
+			popup.find('.s_try__item').addClass('_showed');
+		},1500);
 		$('.overlay, .popup._to_cart').addClass('visible');
 		var px = window.pageYOffset;
 		$('.popup').css('top',px+'px');
 	});
 	//close popups
-	$('.overlay, .close_pop').click(function(){
+	$('.overlay, .close_pop, ._close_pop').click(function(){
+		$('.popup._to_cart').find('.s_try__item').removeClass('_showed');
 		$('.popup, .overlay').removeClass('visible');
 		var px = window.pageYOffset;
 		setTimeout(function(){
@@ -171,6 +186,147 @@ $(document).ready(function(){
 			menu = $('.header__menu');
 		hamb.toggleClass('_close');
 		menu.toggleClass('_active');
+	});
+
+	//g_calendar tabs
+	$('.g_calendar__head a').click(function(e){
+		e.preventDefault();
+		var el = $(this),
+			n = el.index(),
+			calendar = el.closest('.g_calendar'),
+			body = calendar.find('.g_calendar__body');
+		el.addClass('_current').siblings().removeClass('_current');
+		body.eq(n).addClass('_current').siblings().removeClass('_current');
+		sl_lunch1.refresh();
+		sl_lunch2.refresh();
+	});
+	//lunch.html g_calendar slider
+	if($('.s_lunch__week1').length){
+		var sl_lunch1 = $('.s_lunch__slider1').lightSlider({
+			item:1,
+			pager:false,
+			controls: false,
+			adaptiveHeight: true
+		});
+		$('.s_lunch__week1 .g_figure_arr_next').click(function(e){
+			e.preventDefault();
+			$('.s_lunch__week1').fadeOut(500);
+			setTimeout(function(){
+				$('.s_lunch__week2').fadeIn(450);
+				sl_lunch2.refresh();
+			},500);
+		});
+		$('.s_lunch__week1 .g_figure_arr_pager a').click(function(e){
+			e.preventDefault();
+			var pager = $(this),
+				pager_n = pager.index();
+			pager.addClass('_current').siblings().removeClass('_current');
+			sl_lunch1.goToSlide(pager_n);
+		});
+	}
+	if($('.s_lunch__week2').length){
+		var sl_lunch2 = $('.s_lunch__slider2').lightSlider({
+			item:1,
+			pager:false,
+			controls: false,
+			adaptiveHeight: true
+		});
+		$('.s_lunch__week2 .g_figure_arr_prev').click(function(e){
+			e.preventDefault();
+			$('.s_lunch__week2').fadeOut(500);
+			setTimeout(function(){
+				$('.s_lunch__week1').fadeIn(450);
+				sl_lunch1.refresh();
+			},500);
+		});
+		$('.s_lunch__week2 .g_figure_arr_pager a').click(function(e){
+			e.preventDefault();
+			var pager = $(this),
+				pager_n = pager.index();
+			pager.addClass('_current').siblings().removeClass('_current');
+			sl_lunch2.goToSlide(pager_n);
+		});
+	}
+	//lunch-menu.html g_calendar slider
+	if($('.s_menu__lunch_slider').length){
+		var sl_menu_lunch = $('.s_menu__lunch_slider').lightSlider({
+			item:1,
+			pager:false,
+			controls: false,
+			mode: 'fade',
+			adaptiveHeight: true,
+			speed: 850
+		});
+		$('.g_figure_arr_pager a').click(function(e){
+			e.preventDefault();
+			var pager = $(this),
+				pager_n = pager.index();
+			pager.addClass('_current').siblings().removeClass('_current');
+			sl_menu_lunch.goToSlide(pager_n);
+		});
+	}
+
+	//menu.html count click
+	$('.s_try__txt_head .s_try__count_decr').click(function(){
+		var wrap = $(this).closest('.s_try__txt_head'),
+			counter = wrap.find('.s_try__count_n'),
+			current_n = parseInt(counter.text()),
+			price = wrap.find('b'),
+			price_n = parseInt(price.text()),
+			per_one_price = price_n/current_n;
+		if(current_n == 2){
+			$(this).addClass('_disabled');
+			counter.text(current_n-1);
+			price.text((current_n-1) * per_one_price);
+		}else if(current_n == 1){
+			return;
+		}else{
+			counter.text(current_n-1);
+			price.text((current_n-1) * per_one_price);
+		}
+	});
+	$('.s_try__txt_head .s_try__count_incr').click(function(){
+		var wrap = $(this).closest('.s_try__txt_head'),
+			counter = wrap.find('.s_try__count_n'),
+			minus = wrap.find('.s_try__count_decr'),
+			current_n = parseInt(counter.text()),
+			price = wrap.find('b'),
+			price_n = parseInt(price.text()),
+			per_one_price = price_n/current_n;
+		counter.text(current_n+1);
+		price.text((current_n+1) * per_one_price);
+		minus.removeClass('_disabled');
+	});
+	//g_calendar bot count click
+	$('.g_calendar__bot .g_count__decr').click(function(){
+		var wrap = $(this).closest('.g_calendar__bot'),
+			counter = wrap.find('.g_count__n'),
+			current_n = parseInt(counter.text()),
+			price = wrap.find('.g_calendar__bot_price strong'),
+			price_n = parseInt(price.text()),
+			per_one_price = price_n/current_n;
+		if(current_n == 2){
+			$(this).addClass('_disabled');
+			counter.text(current_n-1);
+			price.text((current_n-1) * per_one_price);
+		}else if(current_n == 1){
+			return;
+		}else{
+			counter.text(current_n-1);
+			price.text((current_n-1) * per_one_price);
+		}
+	});
+	$('.g_calendar__bot .g_count__incr').click(function(){
+		var wrap = $(this).closest('.g_calendar__bot'),
+			counter = wrap.find('.g_count__n'),
+			minus = wrap.find('.g_count__decr'),
+			current_n = parseInt(counter.text()),
+			price = wrap.find('.g_calendar__bot_price strong'),
+			price_n = parseInt(price.text()),
+			per_one_price = price_n/current_n;
+		counter.text(current_n+1);
+		price.text((current_n+1) * per_one_price);
+		minus.removeClass('_disabled');
 	});
 
 	if($('._scroll').length){

@@ -455,6 +455,10 @@ textarea.g_input{
 	}
 	&__body{
 		padding: 25px 25px 0;
+		display: none;
+		&._current{
+			display: block;
+		}
 		hr{
 			margin: 0 0;
 			border: none;
@@ -532,9 +536,11 @@ textarea.g_input{
 		font-size: 1rem;
 		line-height: 1.15;
 		cursor: pointer;
+		user-select: none;
 		&._disabled{
 			opacity: 0.5;
 			background-color: $gray;
+			cursor: default;
 		}
 	}
 	&__incr{
@@ -1255,6 +1261,11 @@ textarea.g_input{
 				}
 			}
 		}
+		&._showed{
+			.s_try__txt{
+				opacity: 1;
+			}
+		}
 		&_img{
 			height: 260px;
 			padding: 10px;
@@ -1299,6 +1310,7 @@ textarea.g_input{
 		align-items: center;
 		justify-content: space-between;
 		opacity: 0;
+		transition: $t*2;
 		p{
 			color: #464646;
 			font-size: .95rem;
@@ -1330,9 +1342,6 @@ textarea.g_input{
 				}
 			}
 		}
-		&_btn{
-
-		}
 	}
 	&__count{
 		@extend ._flex_sb_c;
@@ -1345,6 +1354,7 @@ textarea.g_input{
 			font-size: 1rem;
 			line-height: 1.15;
 			cursor: pointer;
+			user-select: none;
 			&._disabled{
 				opacity: 0.5;
 				background-color: $gray;
@@ -1766,6 +1776,7 @@ textarea.g_input{
 	padding-top: 38px;
 	padding-bottom: 50px;
 	text-align: center;
+	background-attachment: fixed;
 	&__head{
 		h3{
 			font-size: 1.5rem;
@@ -1796,7 +1807,6 @@ textarea.g_input{
 		margin-right: auto;
 	}
 	&__calendar{
-		margin-bottom: 20px;
 		text-align: left;
 	}
 	&__all{
@@ -1804,6 +1814,7 @@ textarea.g_input{
 		margin-right: auto;
 		padding-left: 40px;
 		padding-right: 40px;
+		margin-top: 20px;
 		width: auto;
 		max-width: none;
 	}
@@ -2067,6 +2078,18 @@ textarea.g_input{
 	padding-bottom: 50px;
 	.g_calendar{
 		margin-bottom: 30px;
+	}
+	.g_figure_arr{
+		&_pager{
+			margin-left: auto;
+			margin-right: auto;
+			hr{
+				border: none;
+				border-bottom: 1px solid  #ccc;
+				flex-grow: 2;
+				width: 50px;
+			}
+		}
 	}
 }
 //item.html
