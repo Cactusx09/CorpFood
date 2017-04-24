@@ -221,12 +221,29 @@ $t: .25s;
 	overflow: hidden;
 	z-index: 0;
 	cursor: pointer;
+	transition: $t;
+	&:hover{
+		&:before{
+			background-color: $red;
+			transform: rotate(32deg);
+		}
+	}
 	&._transparent_bg{
 		small{
 			color: #2f2f2f;
 		}
 		&:before{
-			display: none;
+			opacity: 0;
+		}
+		&:hover{
+			small{
+				color: #fff;
+			}
+			&:before{
+				width: 100%;
+				opacity: 1;
+				transform: rotate(0deg);
+			}
 		}
 	}
 	&:before{
@@ -237,6 +254,7 @@ $t: .25s;
 		background-color: #464646;
 		z-index: -1;
 		transform: rotate(42deg);
+		transition: $t;
 	}
 	small{
 		color: #fff;
@@ -252,6 +270,13 @@ $t: .25s;
 		justify-content: center;
 		align-items: center;
 		padding: 10px 30px;
+		transition: $t;
+		small{
+			transition: $t;
+		}
+		&:hover{
+			background-color: $red;
+		}
 	}
 }
 .g_input{
@@ -299,6 +324,9 @@ textarea.g_input{
 			color: #464646;
 			margin-left: 4px;
 			margin-right: 4px;
+			&:hover{
+				color: $red;
+			}
 			small{
 				font-size: 1.25rem;
 			}
@@ -307,6 +335,7 @@ textarea.g_input{
 				color: #fff;
 				margin-right: 7px;
 				margin-left: 7px;
+				cursor: default;
 				+a{
 					margin-left: 7px;
 				}
@@ -321,6 +350,11 @@ textarea.g_input{
 	&_arr{
 		cursor: pointer;
 		user-select: none;
+		&:hover{
+			span{
+				color: $red;
+			}
+		}
 		span{
 			color: #464646;
 			font-size: 0.875rem;
@@ -344,6 +378,10 @@ textarea.g_input{
 	}
 	a{
 		color: #919191;
+		transition: $t;
+		&:hover{
+			color: $red;
+		}
 	}
 	img{
 		max-width: 6px;
@@ -371,16 +409,22 @@ textarea.g_input{
 		width: 1.45rem;
 		color: #000;
 		text-align: center;
+		transition: $t;
+		&:hover{
+			color: $red;
+		}
 		&:not(:first-of-type){
-			margin-left: 1px;
+			margin-left: 2px;
 		}
 		&:not(:last-of-type){
-			margin-right: 1px;
+			margin-right: 2px;
 		}
 		&._current{
 			background-color: $cheese;
 			color: #fff;
 			border-radius: 50%;
+			cursor: default;
+			pointer-events: none;
 		}
 	}
 	img{
@@ -426,6 +470,7 @@ textarea.g_input{
 			}
 			&__body{
 				padding-top: 10px;
+				display: block;
 			}
 		}
 	}
@@ -441,12 +486,18 @@ textarea.g_input{
 			font-family: 'Roboto Slab';
 			background-color: #f2f2f2;
 			border-bottom: 1px solid  #dadada;
+			transition: $t;
+			&:hover{
+				border-color: $red;
+			}
 			&:not(:last-of-type){
 				border-right: 1px solid  #dadada;
 			}
 			&._current{
 				background-color: #fff;
 				border-bottom-color: transparent;
+				cursor: default;
+				pointer-events: none;
 			}
 			img{
 				margin-right: 8px;
@@ -534,17 +585,26 @@ textarea.g_input{
 		height: 17px;
 		color: #fefefe;
 		font-size: 1rem;
-		line-height: 1.15;
+		line-height: 1;
 		cursor: pointer;
 		user-select: none;
+		border: 1px solid transparent;
+		transition: $t;
 		&._disabled{
 			opacity: 0.5;
 			background-color: $gray;
 			cursor: default;
+			pointer-events: none;
+		}
+		&:hover{
+			color: $red;
+			background-color: transparent;
+			border-color: $red;
 		}
 	}
 	&__incr{
 		line-height: 1;
+		padding-left: 1px;
 	}
 	&__n{
 		color: #464646;
@@ -643,6 +703,11 @@ textarea.g_input{
 			padding-left: 20px;
 			font-family: 'Roboto Condensed';
 			position: relative;
+			&:hover{
+				&:before{
+					background-color: $red;
+				}
+			}
 			&:before{
 				content: '';
 				position: absolute;
@@ -652,6 +717,7 @@ textarea.g_input{
 				height: 7px;
 				border-radius: 50%;
 				background-color: $cheese;
+				transition: $t/2;
 			}
 		}
 	}
@@ -664,6 +730,11 @@ textarea.g_input{
 			font-family: 'Roboto Condensed';
 			position: relative;
 			counter-increment: n;
+			&:hover{
+				&:before{
+					color: $red;
+				}
+			}
 			&:before{
 				content: '0' counter(n);
 				position: absolute;
@@ -672,6 +743,7 @@ textarea.g_input{
 				font-size: 0.8rem;
 				color: $persian;
 				font-weight: 700;
+				transition: $t/2;
 			}
 		}
 	}
@@ -696,10 +768,16 @@ textarea.g_input{
 		background-size: cover;
 		padding: 30px;
 		margin-bottom: 40px;
+		&:hover{
+			.g_txt__img_text{
+				background-color: rgba(255, 255, 255, 0.8);
+			}
+		}
 		&_text{
 			max-width: 50%;
 			padding: 35px;
 			background-color: rgba(255, 255, 255, 0.5);
+			transition: $t;
 			&._right{
 				margin-left: auto;
 			}
@@ -714,6 +792,11 @@ textarea.g_input{
 		a{
 			color: $persian;
 			border-bottom: 1px solid $green;
+			transition: $t;
+			&:hover{
+				color: #000;
+				border-color: $red;
+			}
 		}
 	}
 	>*:last-child{
@@ -741,11 +824,23 @@ textarea.g_input{
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+		&:hover{
+			strong{
+				color: $red;
+			}
+			span{
+				&:before,
+				&:after{
+					width: 115%;
+				}
+			}
+		}
 		strong{
 			color: #000000;
 			font-family: "Roboto Condensed";
 			font-size: 0.94rem;
 			margin-top: 3px;
+			transition: $t*2;
 		}
 		span{
 			position: relative;
@@ -757,6 +852,7 @@ textarea.g_input{
 				background-color: #464646;
 				bottom: 3px;
 				right: calc(100% + 5px);
+				transition: $t;
 			}
 			&:after{
 				content: '';
@@ -766,6 +862,7 @@ textarea.g_input{
 				background-color: #464646;
 				bottom: 3px;
 				left: calc(100% + 7px);
+				transition: $t;
 			}
 		}
 	}
@@ -785,6 +882,11 @@ textarea.g_input{
 			font-size: .95rem;
 			display: block;
 			margin-bottom: 1px;
+			transition: $t;
+			white-space: nowrap;
+			&:hover{
+				color: $red;
+			}
 		}
 		span{
 			color: $gray;
@@ -794,6 +896,11 @@ textarea.g_input{
 			font-size: 1.063rem;
 			border-bottom: 1px solid  $gray;
 			cursor: pointer;
+			transition: $t;
+			&:hover{
+				color: #000;
+				border-color: $red;
+			}
 		}
 	}
 	&__panel{
@@ -802,9 +909,18 @@ textarea.g_input{
 			font-size: 1rem;
 			margin-bottom: 6px;
 			display: block;
+			transition: $t;
+			&:hover{
+				color: $cheese;
+			}
 		}
 		&_cart{
 			@extend ._flex_fs_c;
+			&:hover{
+				span{
+					color: #000;
+				}
+			}
 			img{
 				min-width: 16px;
 				margin-right: 10px;
@@ -813,6 +929,7 @@ textarea.g_input{
 				color: $gray;
 				font-size: 1rem;
 				margin-right: 6px;
+				transition: $t;
 			}
 			small{
 				width: 1.25rem;
@@ -843,6 +960,13 @@ textarea.g_input{
 		display: none;
 		&._active{
 			display: flex;
+			li,h4,i{
+				@for $n from 1 through 20{
+					&:nth-of-type(#{$n}){
+						animation: scale $t*$n*1.5;
+					}
+				}
+			}
 		}
 		h4{
 			flex-grow: 2;
@@ -853,28 +977,41 @@ textarea.g_input{
 				line-height: 1.6;
 				color: #464646;
 				font-size: 1.25rem;
+				transition: $t;
+				border-bottom: 1px solid transparent;
+				&:hover{
+					border-color: $red;
+				}
 			}
 		}
 		ul{
 			li{
-				padding-left: 25px;
-				position: relative;
-				&:before{
-					content: '';
-					position: absolute;
-					left: 10px;
-					top: 8px;
-					width: 4px;
-					height: 4px;
-					background-color: #464646;
-					border-radius: 50%;
-				}
 				&:not(:last-of-type){
 					margin-bottom: 20px;
 				}
 				a{
+					padding-left: 25px;
 					color: #464646;
 					font-size: 1rem;
+					&:hover{
+						color: $red;
+						&:before{
+							background-color: $cheese;
+						}
+					}
+					position: relative;
+					transition: $t;
+					&:before{
+						content: '';
+						position: absolute;
+						left: 10px;
+						top: 8px;
+						width: 4px;
+						height: 4px;
+						background-color: #464646;
+						border-radius: 50%;
+						transition: $t;
+					}
 				}
 			}
 		}
@@ -904,8 +1041,33 @@ textarea.g_input{
 			color: #000;
 			font-size: 0.875rem;
 			text-transform: uppercase;
+			transition: $t;
+			&:hover{
+				background-color: $cheese;
+				box-shadow: 0.1rem 0.1rem 0.2rem #c5c5c5;
+				strong{
+					color: #fff;
+				}
+				.header__menu_hamb{
+					span{
+						background-color: #fff;
+					}
+				}
+			}
+			&._active{
+				background-color: $red;
+				strong{
+					color: #fff;
+				}
+				.header__menu_hamb{
+					span{
+						background-color: #fff;
+					}
+				}
+			}
 			strong{
 				white-space: nowrap;
+				transition: $t;
 			}
 		}
 		&_hamb{
@@ -934,7 +1096,7 @@ textarea.g_input{
 				}
 			}
 			span{
-				transition: transform $t*2;
+				transition: transform $t*2, all $t;
 				width: 19px;
 				height: 3px;
 				background-color: #a8a8a8;
@@ -967,6 +1129,7 @@ textarea.g_input{
 			display: block;
 			position: relative;
 			padding-left: 25px;
+			transition: $t;
 			&:not(:last-of-type){
 				margin-bottom: 10px;
 			}
@@ -979,6 +1142,14 @@ textarea.g_input{
 				border-radius: 50%;
 				top: 4px;
 				left: 0;
+				transition: $t;
+			}
+			&:hover{
+				color: $red;
+				&:before{
+					background-color: #fff;
+					border-color: $red;
+				}
 			}
 		}
 	}
@@ -991,6 +1162,7 @@ textarea.g_input{
 			border: 2px solid  #fff;
 			border-radius: 50%;
 			@extend ._flex_c_c;
+			transition: $t;
 			&:hover{
 				background-color: #fff;
 				&:nth-of-type(1){
@@ -1187,6 +1359,22 @@ textarea.g_input{
 			background-position: center;
 			background-size: cover;
 			margin-bottom: 30px;
+			transition: $t;
+			position: relative;
+			&:before{
+				content: '';
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				background-color: $persian;
+				opacity: 0;
+				transition: $t;
+			}
+			&:hover{
+				&:before{
+					opacity: 0.4;
+				}
+			}
 		}
 		&_col2{
 			width: calc(50% - 15px);
@@ -1227,9 +1415,15 @@ textarea.g_input{
 			line-height: 1.4;
 			color: #000;
 			font-size: 1.25rem;
-			transform: rotate(-20deg) translateY(-35px);
-			display: block;
+			transform: rotate(-20deg) translateY(-10px);
+			display: inline-block;
 			margin-bottom: 25px;
+			white-space: nowrap;
+			border-bottom: 1px solid transparent;
+			transition: $t;
+			&:hover{
+				border-color: $red;
+			}
 		}
 	}
 }
@@ -1355,9 +1549,18 @@ textarea.g_input{
 			line-height: 1.15;
 			cursor: pointer;
 			user-select: none;
+			border: 1px solid transparent;
+			transition: $t;
 			&._disabled{
 				opacity: 0.5;
 				background-color: $gray;
+				cursor: default;
+				pointer-events: none;
+			}
+			&:hover{
+				color: $red;
+				background-color: transparent;
+				border-color: $red;
 			}
 		}
 		&_incr{
@@ -1382,6 +1585,10 @@ textarea.g_input{
 		font-size: 1rem;
 		margin-left: auto;
 		margin-right: auto;
+		transition: $t;
+		&:hover{
+			background-color: $red;
+		}
 	}
 }
 .s_work{
@@ -1421,6 +1628,24 @@ textarea.g_input{
 			border-radius: 2px;
 			text-align: center;
 			padding: 5px 0;
+			position: relative;
+			&:before{
+				content: '';
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				z-index: 2;
+				transition: $t;
+				transform: scale(0);
+			}
+			&:hover{
+				&:before{
+					background-color: rgba($cheese, .5);
+					transform: none;
+				}
+			}
 			img{
 				max-width: 170px;
 				width: 100%;
@@ -1437,8 +1662,12 @@ textarea.g_input{
 			top: 50%;
 			margin-top: -20px;
 			user-select: none;
+			transition: $t;
+			path{
+				transition: $t;
+			}
 			&:hover{
-				background-color: rgba(70, 70, 70, 0.7);
+				background-color: $red;
 				path{
 					fill: #fff;
 				}
@@ -1477,6 +1706,7 @@ textarea.g_input{
 		display: flex;
 		align-items: stretch;
 		justify-content: space-between;
+		max-width: 100%;
 	}
 	&__left{
 		background-color: #fff;
@@ -1498,13 +1728,20 @@ textarea.g_input{
 		ul{
 			margin: 20px 15px 25px 0;
 			li{
-				padding: 10px;
+				transition: $t;
 				&:not(:last-of-type){
 					border-bottom: 1px solid  #f2f2f2;
+				}
+				&:last-of-type{
+					border-bottom: 1px solid transparent;
+				}
+				&:hover{
+					border-bottom-color: $red;
 				}
 				&._current{
 					background-color: $cheese;
 					border-bottom-color: transparent;
+					pointer-events: none;
 					a{
 						color: #fff;
 					}
@@ -1515,14 +1752,19 @@ textarea.g_input{
 					font-family: 'Roboto Condensed';
 					display: block;
 					position: relative;
+					padding: 10px;
 					padding-right: 17px;
+					transition: $t;
+					&:hover{
+						color: #000;
+					}
 					&:before{
 						content: '';
 						position: absolute;
 						width: 20px;
 						height: 10px;
-						top: 6px;
-						right: 0;
+						top: 15px;
+						right: 10px;
 						background: url('../images/ico/arr_go.png') no-repeat center;
 						background-size: cover;
 					}
@@ -1532,17 +1774,24 @@ textarea.g_input{
 	}
 	&__right{
 		flex-grow: 2;
+		max-width: 100%;
 		&_links{
 			@extend ._flex_sb_c;
 			padding: 25px 0;
 			a{
 				@extend ._flex_fs_c;
+				&:hover{
+					span{
+						color: $red;
+					}
+				}
 				span{
 					font-family: "Roboto Slab";
 					color: #464646;
 					font-size: 1.375rem;
 					margin-left: 20px;
 					width: 153px;
+					transition: $t;
 				}
 			}
 		}
@@ -1602,11 +1851,23 @@ textarea.g_input{
 				font-size: 1.7rem;
 				font-weight: 700;
 				color: #464646;
+				transition: $t;
 			}
 			small{
 				color: #9f9f9f;
 				font-weight: 400;
 				font-size: 1.7rem;
+				transition: $t;
+			}
+			a{
+				&:hover{
+					span{
+						color: $red;
+					}
+					small{
+						color: #464646;
+					}
+				}
 			}
 		}
 	}
@@ -1686,6 +1947,13 @@ textarea.g_input{
 		&._active{
 			.g_txt{
 				display: block;
+				*{
+					@for $n from 1 through 20{
+						&:nth-child(#{$n}){
+							animation: scale $t*$n*2;
+						}
+					}
+				}
 			}
 			h3{
 				img{
@@ -1700,11 +1968,17 @@ textarea.g_input{
 			padding: 10px 60px;
 			position: relative;
 			cursor: pointer;
+			transition: $t;
+			&:hover{
+				background-color: $cheese;
+				color: #fff;
+			}
 			img{
 				position: absolute;
 				right: 25px;
 				top: 50%;
 				margin-top: -7.5px;
+				transition: $t;
 			}
 		}
 		.g_txt{
@@ -1739,6 +2013,10 @@ textarea.g_input{
 			color: #464646;
 			font-weight: 700;
 			text-transform: uppercase;
+			transition: $t;
+			&:hover{
+				color: $red;
+			}
 		}
 		strong{
 			color: $cheese;
@@ -1747,6 +2025,11 @@ textarea.g_input{
 			text-transform: uppercase;
 			cursor: pointer;
 			user-select: none;
+			transition: $t;
+			&:hover{
+				color: #000;
+				border-color: $red;
+			}
 		}
 	}
 }
@@ -2080,6 +2363,9 @@ textarea.g_input{
 		margin-bottom: 30px;
 	}
 	.g_figure_arr{
+		&:before{
+			display: none;
+		}
 		&_pager{
 			margin-left: auto;
 			margin-right: auto;
@@ -2105,6 +2391,10 @@ textarea.g_input{
 		@extend ._flex_fs_c;
 		margin-bottom: 20px;
 		font-family: 'Roboto Condensed';
+		transition: $t;
+		&:hover{
+			color: $red;
+		}
 		img{
 			margin-right: 10px;
 		}
@@ -2213,23 +2503,40 @@ textarea.g_input{
 			padding-top: 10px;
 			cursor: pointer;
 			user-select: none;
+			transition: $t;
 			&:not(:last-of-type){
 				border-bottom: 1px solid  #dadada;
+			}
+			&:last-of-type{
+				border-bottom: 1px solid transparent;
 			}
 			&:nth-of-type(1){
 				&._current{
 					color: $persian;
+				}
+				&:hover{
+					border-bottom-color: $persian;
 				}
 			}
 			&:nth-of-type(2){
 				&._current{
 					color: $violet;
 				}
+				&:hover{
+					border-bottom-color: $violet ;
+				}
 			}
 			&:nth-of-type(3){
 				&._current{
 					color: $red;
 				}
+				&:hover{
+					border-bottom-color: $red ;
+				}
+			}
+			&._current{
+				pointer-events: none;
+				cursor: default;
 			}
 			i{
 				min-width: 41px;
@@ -2294,6 +2601,8 @@ textarea.g_input{
 			&__item{
 				&_panel{
 					@extend ._flex_fs_c;
+					border: none;
+					padding: 0 !important;
 					.g_count{
 						margin-right: 34px;
 					}
@@ -2666,6 +2975,15 @@ textarea.g_input{
 			}
 		}
 	}
+	&.visible{
+		.g_input,.g_btn,h3,p,strong,span,h5{
+			@for $n from 1 through 10{
+				&:nth-of-type(#{$n}){
+					animation: scale $t*$n*2;
+				}
+			}
+		}
+	}
 }
 .visible{
 	opacity: 1 !important;
@@ -2740,6 +3058,10 @@ body,html{
 		transition: opacity $t ease;
 		color: #464646;
 	}
+}
+@keyframes scale {
+	0% { transform: scale(-1);}
+	100% {  transform: scale(1); }
 }
 
 /* ==========================================================

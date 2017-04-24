@@ -6,8 +6,8 @@ $(document).ready(function(){
 			menu = btn.closest('.header__body').find('.header__menu');
 		hamb.toggleClass('_close');
 		menu.toggleClass('_active');
+		btn.toggleClass('_active');
 	});
-
 
 	//Рекомендуем попробовать slider
 	if($('.s_try__body').length){
@@ -27,7 +27,6 @@ $(document).ready(function(){
 			sl_try.goToNextSlide();
 		});
 	}
-
 
 	//Некоторые отзывы наших довольных клиентов slider
 	if($('.s_work__cert').length){
@@ -183,9 +182,11 @@ $(document).ready(function(){
 	//404.html menu btn
 	$('.s_404__menu').click(function(){
 		var hamb = $('.header__menu_hamb'),
-			menu = $('.header__menu');
+			menu = $('.header__menu'),
+			btn = $('.header__menu_btn');
 		hamb.toggleClass('_close');
 		menu.toggleClass('_active');
+		btn.toggleClass('_active');
 	});
 
 	//g_calendar tabs
@@ -251,9 +252,8 @@ $(document).ready(function(){
 	if($('.s_menu__lunch_slider').length){
 		var sl_menu_lunch = $('.s_menu__lunch_slider').lightSlider({
 			item:1,
-			pager:false,
+			pager: false,
 			controls: false,
-			mode: 'fade',
 			adaptiveHeight: true,
 			speed: 850
 		});
@@ -328,7 +328,22 @@ $(document).ready(function(){
 		price.text((current_n+1) * per_one_price);
 		minus.removeClass('_disabled');
 	});
-
+	//g_calendar delete profile.html
+	$('.g_calendar__del').click(function(e){
+		e.preventDefault();
+		var el = $(this),
+			wrap = el.closest('.g_calendar__items'),
+			rows_length = wrap.find('.g_calendar__item').length,
+			row = el.closest('.g_calendar__item'),
+			hr = row.next('hr');
+		if(rows_length>1){
+			row.remove();
+			hr.remove();
+			if(rows_length==2){
+				wrap.find('hr').remove();
+			}
+		}
+	});
 	if($('._scroll').length){
 		//custom scroll
 		$('._scroll').perfectScrollbar();
