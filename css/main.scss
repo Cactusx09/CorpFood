@@ -811,6 +811,33 @@ textarea.g_input{
 .header{
 	border-bottom: 5px solid $cheese;
 	padding: 7px 0;
+	background-color: #fff;
+	position: fixed;
+	width: 100%;
+	top: 0;
+	left: 0;
+	z-index: 555;
+	transition: $t;
+	&._fixed{
+		padding: 5px 0;
+		.header__name, .header__call span,p,a,strong,small{
+			@for $n from 1 through 20{
+				&:nth-of-type(#{$n}){
+					animation: scale $t*$n*1.5;
+				}
+			}
+		}
+		hr{
+			height: 25px;
+		}
+		.header{
+			&__logo{
+				img{
+					max-height: 40px;
+				}
+			}
+		}
+	}
 	&__body{
 		@extend ._flex_sb_c;
 		position: relative;
@@ -819,6 +846,7 @@ textarea.g_input{
 		border: none;
 		height: 49px;
 		border-left: 1px solid #e6e6e6;
+		transition: $t;
 	}
 	&__logo{
 		display: flex;
@@ -841,6 +869,10 @@ textarea.g_input{
 			font-size: 0.94rem;
 			margin-top: 3px;
 			transition: $t*2;
+		}
+		img{
+			transition: $t;
+			max-height: 71px;
 		}
 		span{
 			position: relative;
@@ -3060,8 +3092,12 @@ body,html{
 	}
 }
 @keyframes scale {
-	0% { transform: scale(-1);}
-	100% {  transform: scale(1); }
+	0% { transform: scaleX(-1);}
+	100% {  transform: scaleX(1); }
+}
+@keyframes down {
+	0% { transform: translateY(-105%);}
+	100% {  transform: none; }
 }
 
 /* ==========================================================
