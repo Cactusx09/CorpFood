@@ -19,7 +19,23 @@ $(document).ready(function(){
 			controls: false,
 			pager: false,
 			speed: 250,
-			slideMargin: 30
+			slideMargin: 30,
+			responsive: [
+				{
+					breakpoint: 1070,
+					settings: {
+						item: 3
+					},
+					breakpoint: 800,
+					settings:{
+						item: 2
+					},
+					breakpoint: 500,
+					settings:{
+						item: 1
+					}
+				}
+			]
 		});
 		$('.s_try .g_figure_arr_prev').click(function(){
 			sl_try.goToPrevSlide();
@@ -42,7 +58,15 @@ $(document).ready(function(){
 				el.lightGallery({
 					selector: '.s_work__cert_item'
 				});
-			}
+			},
+			responsive: [
+				{
+					breakpoint: 1050,
+					settings:{
+						item: 4
+					}
+				}
+			]
 		});
 		$('.s_work__cert_prev').click(function(){
 			sl_cert.goToPrevSlide();
