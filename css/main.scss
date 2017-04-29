@@ -1807,7 +1807,7 @@ textarea.g_input{
 	}
 	&__right{
 		flex-grow: 2;
-		max-width: calc(100% - 280px);
+		max-width: 100%;
 		&_links{
 			@extend ._flex_sb_c;
 			padding: 25px 0;
@@ -2410,6 +2410,9 @@ textarea.g_input{
 			}
 		}
 	}
+	.s_menu__right{
+		max-width: calc(100% - 280px);
+	}
 }
 //item.html
 .s_item{
@@ -2712,6 +2715,9 @@ textarea.g_input{
 			margin-right: auto;
 			margin-bottom: 25px;
 		}
+	}
+	.s_menu__right{
+		max-width: 100%;
 	}
 }
 //request.html
