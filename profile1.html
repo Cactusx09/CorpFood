@@ -5,7 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="ru"> <!--<![endif]-->
     <head>
         <meta charset="utf-8">
-		<title>Оформления заказа</title>
+		<title>Личный кабинет</title>
         <meta name="description" content="">
         <meta name="keywords" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -97,19 +97,25 @@
         	</div>
         </header>
 
-		<section class="s_profile s_request">
+		<section class="s_profile">
 			<div class="container">
-				<h1 class="g_h2"><small>Оформление заказа</small></h1>
-				<h6>* поля, отмеченные звездочкой, обязательны к заполнению</h6>
-				<form class="s_profile__body" action="/">
-					<div class="s_profile__right _current">
+				<h1 class="g_h2"><small>Личный кабинет</small></h1>
+				<div class="s_profile__body">
+					<div class="s_profile__left">
+						<ul>
+							<li class="_current" data-hover="images/ico/profile/1a.png"><a href="profile1.html"><i><img src="images/ico/profile/1a.png" alt=""></i><span>Персональные данные</span></a></li>
+							<li data-hover="images/ico/profile/2a.png"><a href="profile2.html"><i><img src="images/ico/profile/2.png" alt=""></i><span>Адреса доставки</span></a></li>
+							<li data-hover="images/ico/profile/3a.png"><a href="profile3.html"><i><img src="images/ico/profile/3.png" alt=""></i><span>Мои заказы</span></a></li>
+						</ul>
+					</div>
+					<form class="s_profile__right _current" action="/">
 						<div class="s_profile__fields">
 							<div class="s_profile__item">
-								<span>Имя*</span>
+								<span>Имя</span>
 								<input class="g_input" type="text" name="name">
 							</div>
 							<div class="s_profile__item">
-								<span>Фамилия*</span>
+								<span>Фамилия</span>
 								<input class="g_input" type="text" name="surname">
 							</div>
 							<div class="s_profile__item">
@@ -124,43 +130,10 @@
 								<span>Е-майл</span>
 								<input class="g_input" type="email" name="mail">
 							</div>
-							<div class="s_profile__item">
-								<span></span>
-								<input class="g_checkbox" type="checkbox" name="subscribe" id="subscribe">
-								<label class="g_checkbox_label" for="subscribe">Подписаться на рассылку</label>
-							</div>
+							<button type="submit"><span class="g_btn _transparent_bg"><small>СОХРАНИТЬ</small></span></button>
 						</div>
-					</div>
-					<hr>
-					<div class="s_profile__right _current">
-						<div class="s_profile__fields">
-							<div class="s_profile__item">
-								<span>Город*</span>
-								<input class="g_input" type="text" name="city">
-							</div>
-							<div class="s_profile__item">
-								<span>Улица</span>
-								<input class="g_input" type="text" name="street">
-							</div>
-							<div class="s_profile__item">
-								<span>Дом, строение</span>
-								<input class="g_input" type="text" name="base">
-							</div>
-							<div class="s_profile__item">
-								<span>Офис, квартира</span>
-								<input class="g_input" type="text" name="houseroom">
-							</div>
-							<div class="s_profile__item">
-								<span>Доп. сведения</span>
-								<textarea class="g_input" name="additional" placeholder="Например: Кодовый замок. Код 489"></textarea>
-							</div>
-							<div class="s_profile__item">
-								<span></span>
-								<button type="submit"><span class="g_btn _transparent_bg"><small>ОТПРАВИТЬ ЗАКАЗ</small></span></button>
-							</div>
-						</div>
-					</div>
-				</form>
+					</form>
+				</div>
 			</div>
 		</section>
 
@@ -212,7 +185,7 @@
 		<div class="popup _call" style="background-image: url('images/bg/popup.jpg')">
 			<div class="close_pop"><span>&times;</span></div>
 			<h3>Заказать звонок</h3>
-			<form action="/" class="_with_thnx">
+			<form action="/">
 				<input hidden name="form" value="Заказать звонок">
 				<input type="text" class="g_input" name="name" placeholder="Имя">
 				<input type="text" class="g_input" name="phone" placeholder="Телефон">

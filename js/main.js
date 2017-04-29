@@ -151,7 +151,7 @@ $(document).ready(function(){
 	$('input[name="phone"]').mask('+7 (999) 999-99-99');
 
 	// validate
-	$("form").each(function () {
+	$("._with_thnx").each(function () {
 		var it = $(this);
 		it.validate({
 			rules: {
@@ -190,6 +190,32 @@ $(document).ready(function(){
 			}
 		});
 	});
+	// validate
+	$("form").each(function () {
+		var it = $(this);
+		it.validate({
+			rules: {
+				form: {required: false},
+				name: {required: true},
+				phone: {required: true},
+				mail: {required: true},
+				city: {required: true},
+				street: {required: true}
+			},
+			messages: {},
+			errorPlacement: function (error, element) {},
+			submitHandler: function (form) {
+
+			},
+			success: function () {},
+			highlight: function (element, errorClass) {
+				$(element).addClass('_error');
+			},
+			unhighlight: function (element, errorClass, validClass) {
+				$(element).removeClass('_error');
+			}
+		});
+	});
 
 	//faq.html list toogle
 	$('.s_faq__item h3').click(function(){
@@ -197,23 +223,23 @@ $(document).ready(function(){
 		item.toggleClass('_active');
 	});
 
-	//profile.html aside tabs
-	$('.s_profile__left li').click(function(){
-		var el = $(this),
-			n = el.index(),
-			body = el.closest('.s_profile__body'),
-			tabs = body.find('.s_profile__right'),
-			img = el.find('img');
-		el.addClass('_current').siblings().removeClass('_current');
-		el.siblings().each(function(){
-			var th = $(this),
-				n = th.index()+1;
-			th.find('img').attr('src','images/ico/profile/'+n+'.png');
-		});
-		el.find('img').attr('src','images/ico/profile/'+(n+1)+'a.png');
-
-		tabs.removeClass('_current').eq(n).addClass('_current');
-	});
+//	//profile.html aside tabs
+//	$('.s_profile__left li').click(function(){
+//		var el = $(this),
+//			n = el.index(),
+//			body = el.closest('.s_profile__body'),
+//			tabs = body.find('.s_profile__right'),
+//			img = el.find('img');
+//		el.addClass('_current').siblings().removeClass('_current');
+//		el.siblings().each(function(){
+//			var th = $(this),
+//				n = th.index()+1;
+//			th.find('img').attr('src','images/ico/profile/'+n+'.png');
+//		});
+//		el.find('img').attr('src','images/ico/profile/'+(n+1)+'a.png');
+//
+//		tabs.removeClass('_current').eq(n).addClass('_current');
+//	});
 
 	//404.html menu btn
 	$('.s_404__menu').click(function(){
@@ -297,7 +323,11 @@ $(document).ready(function(){
 			e.preventDefault();
 			var pager = $(this),
 				pager_n = pager.index();
-			pager.addClass('_current').siblings().removeClass('_current');
+			if(pager_n>5){
+				pager_n--;
+			}
+			pager.addClass('_current')
+				.siblings().removeClass('_current');
 			sl_menu_lunch.goToSlide(pager_n);
 		});
 	}

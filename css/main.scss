@@ -1807,7 +1807,7 @@ textarea.g_input{
 	}
 	&__right{
 		flex-grow: 2;
-		max-width: 100%;
+		max-width: calc(100% - 280px);
 		&_links{
 			@extend ._flex_sb_c;
 			padding: 25px 0;
@@ -2528,15 +2528,17 @@ textarea.g_input{
 		margin-right: 30px;
 		width: 100%;
 		li{
-			font-size: 1.125rem;
-			color: #464646;
-			font-family: 'Roboto Condensed';
-			@extend ._flex_fs_c;
-			padding-bottom: 10px;
-			padding-top: 10px;
-			cursor: pointer;
-			user-select: none;
-			transition: $t;
+			a{
+				font-size: 1.125rem;
+				color: #464646;
+				font-family: 'Roboto Condensed';
+				@extend ._flex_fs_c;
+				padding-bottom: 10px;
+				padding-top: 10px;
+				cursor: pointer;
+				user-select: none;
+				transition: $t;
+			}
 			&:not(:last-of-type){
 				border-bottom: 1px solid  #dadada;
 			}
@@ -2545,7 +2547,9 @@ textarea.g_input{
 			}
 			&:nth-of-type(1){
 				&._current{
-					color: $persian;
+					a{
+						color: $persian;
+					}
 				}
 				&:hover{
 					border-bottom-color: $persian;
@@ -2553,7 +2557,9 @@ textarea.g_input{
 			}
 			&:nth-of-type(2){
 				&._current{
-					color: $violet;
+					a{
+						color: $violet;
+					}
 				}
 				&:hover{
 					border-bottom-color: $violet ;
@@ -2561,7 +2567,9 @@ textarea.g_input{
 			}
 			&:nth-of-type(3){
 				&._current{
-					color: $red;
+					a{
+						color: $red;
+					}
 				}
 				&:hover{
 					border-bottom-color: $red ;
@@ -3075,6 +3083,9 @@ textarea.g_input{
 	.s_menu{
 		&__body{
 			flex-wrap: wrap;
+		}
+		&__right{
+			max-width: 100%;
 		}
 		&__left{
 			margin-top: 0;
